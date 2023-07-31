@@ -21,10 +21,16 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void NegativeRateTest() {
+    public void NegativeRateTest1() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new CreditAccount(100, 5_000, 0);
-            ;
+        });
+    }
+
+    @Test
+    public void NegativeRateTest2() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new CreditAccount(100, 5_000, -10);
         });
     }
 
@@ -54,7 +60,7 @@ public class CreditAccountTest {
 
     @ParameterizedTest
     @CsvSource({
-            "-200,5000,15,30",
+            "-200,5000,15,-30",
             "200,5000,10,0",
             "0,5000,10,0"
     })
