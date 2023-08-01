@@ -36,6 +36,12 @@ public class SavingAccountTest {
         assertTrue(savingAccount.add(1000));
         assertEquals(3000, savingAccount.getBalance());
     }
+    @Test
+    public void addMaxValidAmount() {
+        SavingAccount savingAccount = new SavingAccount(2000, 1000, 6000, 10);
+        assertTrue(savingAccount.add(4000));
+        assertEquals(6000, savingAccount.getBalance());
+    }
 
     @Test
     public void addInvalidAmount() {
@@ -57,6 +63,13 @@ public class SavingAccountTest {
         assertTrue(savingAccount.pay(1000));
         assertEquals(2000, savingAccount.getBalance());
     }
+    @Test
+    public void payValidAmountMin() {
+        SavingAccount savingAccount = new SavingAccount(3000, 1000, 5000, 10);
+        assertTrue(savingAccount.pay(2000));
+        assertEquals(1000, savingAccount.getBalance());
+    }
+
 
     @Test
     public void payInvalidAmount() {
