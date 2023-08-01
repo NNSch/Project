@@ -38,7 +38,9 @@ public class CreditAccountTest {
     @CsvSource({
             "2000,true",
             "10000,false",
-            "0,false"
+            "0,false",
+            "8000,true",
+            "8040,false"
     })
     public void PayTest(int amount, boolean expected) {
         CreditAccount account = new CreditAccount(3_000, 5_000, 5);
