@@ -13,13 +13,15 @@ public class Bank {
      * @param amount - сумма перевода
      * @return - true если операция прошла успешно, false иначе
      */
-    public boolean transfer(Account from, Account to, int amount) {
-        if (amount <= 0) {
+     public boolean transfer(Account from, Account to, int amount) {
+        if (amount <= 0 || from.getBalance() < amount) {
             return false;
         }
-        if (from.pay(amount)) {
-            to.add(amount);
-        }
+
+        from.pay(amount);
+        to.add(amount);
+
         return true;
     }
+
 }
